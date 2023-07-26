@@ -1,9 +1,12 @@
 import { pageLinks, socialLinks } from "../data"
+import {PageLinks} from "./PageLinks"
+import SocialLink from "./SocialLink"
 
-export default function Footer() {
+export default function FooterAlternative() {
   return (
 <footer className="section footer">
-        <ul className="footer-links">
+        <PageLinks parentClass="footer-links" itemClass="footer-link"/>
+        {/* <ul className="footer-links">
           {pageLinks.map(link => (
           <li key={link.id}>
             <a href={link.href} className="footer-link">
@@ -11,19 +14,11 @@ export default function Footer() {
             </a>
           </li>
           ))}
-        </ul>
+        </ul> */}
         <ul className="footer-icons">
           {socialLinks.map(social => (
-          <li key={social.id}>
-            <a
-              href={social.href}
-              target="_blank"
-              className="footer-icon"
-              rel="noreferrer"
-            >
-              <i className={social.icon}></i>
-            </a>
-          </li>
+            <SocialLink href={social.href} icon={social.icon} itemClass="footer-icon"/>
+          
           ))}
         </ul>
         <p className="copyright">

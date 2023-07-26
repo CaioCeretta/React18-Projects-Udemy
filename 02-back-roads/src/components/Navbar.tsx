@@ -1,5 +1,7 @@
-import logo from '../images/logo.svg'
+import logo from "../images/logo.svg";
 import React from "react";
+
+import { pageLinks, socialLinks } from "../data";
 
 export default function Navbar() {
   return (
@@ -12,66 +14,28 @@ export default function Navbar() {
           </button>
         </div>
         <ul className="nav-links" id="nav-links">
-          <li>
-            <a href="#home" className="nav-link">
-              {" "}
-              home{" "}
-            </a>
-          </li>
-
-          <li>
-            <a href="#about" className="nav-link">
-              {" "}
-              about{" "}
-            </a>
-          </li>
-
-          <li>
-            <a href="#services" className="nav-link">
-              {" "}
-              services{" "}
-            </a>
-          </li>
-
-          <li>
-            <a href="#tours" className="nav-link">
-              {" "}
-              tours
-            </a>
-          </li>
+          {pageLinks.map((link) => (
+            <li key={link.id}>
+              <a  href={link.href} className="nav-link">
+                {link.text}
+              </a>
+            </li>
+          ))}
         </ul>
 
         <ul className="nav-icons">
-          <li>
+          {socialLinks.map(social => (
+          <li key={social.id}>
             <a
-              href="https://www.twitter.com"
+              href={social.href}
               target="_blank"
               className="nav-icon"
               rel="noreferrer"
             >
-              <i className="fab fa-facebook"></i>
+              <i className={social.icon} />
             </a>
           </li>
-          <li>
-            <a
-              href="https://www.twitter.com"
-              target="_blank"
-              className="nav-icon"
-              rel="noreferrer"
-            >
-              <i className="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.twitter.com"
-              target="_blank"
-              className="nav-icon"
-              rel="noreferrer"
-            >
-              <i className="fab fa-squarespace"></i>
-            </a>
-          </li>
+          ))}
         </ul>
       </div>
     </nav>

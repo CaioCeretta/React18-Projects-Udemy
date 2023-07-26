@@ -6,11 +6,13 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Tours from "./components/Tours";
 import Footer from "./components/Footer";
+import NavbarAlternative from "./components/NavbarAlternative";
+import FooterAlternative from "./components/FooterAlternative";
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <div>
+      <NavbarAlternative />
 
       <Hero />
 
@@ -20,8 +22,8 @@ function App() {
 
       <Tours />
 
-      <Footer />
-    </>
+      <FooterAlternative />
+    </div>
   );
 }
 
