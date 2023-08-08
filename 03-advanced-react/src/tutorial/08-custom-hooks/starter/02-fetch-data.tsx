@@ -1,6 +1,6 @@
 import React from 'react'
 
-import useFetch from './useFetch';
+import useFetch from './useFetchPerson';
 const url = 'https://api.github.com/users/QuincyLarson';
 
 type UserProps = {

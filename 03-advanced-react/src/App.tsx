@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import FetchData from './tutorial/08-custom-hooks/starter/02-fetch-data'
+import Starter from './tutorial/11-performance/starter/03-react18'
 
 
 
 function App() {
   return (
     <div>
-      <FetchData />
+      <Starter />
     </div>
   )
 }

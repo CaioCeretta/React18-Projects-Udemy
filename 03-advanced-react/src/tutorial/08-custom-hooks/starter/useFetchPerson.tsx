@@ -2,16 +2,22 @@ import React, { useEffect, useState } from "react";
 
 const url = 'https://api.github.com/users/QuincyLarson';
 
+type UserProps = {
+  name: string;
+  company: string;
+  avatar_url: string;
+  bio: string
+}
 
 
 
-export default function useFetch(url: string) {
+export default function useFetchPerson(url: string) {
 const [isLoading, setIsLoading] = useState(true);
 const [isError, setIsError] = useState(false);
-const [data, setData] = useState(null);
+const [user, setUser] = useState<UserProps>({} as UserProps);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUser = async () => {
       try {
         const resp = await fetch(url);
         // console.log(resp);
@@ -21,8 +27,8 @@ const [data, setData] = useState(null);
           return;
         }
 
-        const response = await resp.json();
-        setData(response);
+        const user = await resp.json();
+        setUser(user);
       } catch (error) {
         setIsError(true);
         // console.log(error);
@@ -30,11 +36,11 @@ const [data, setData] = useState(null);
       // hide loading
       setIsLoading(false);
     };
-    fetchData();
-  }, []);
+    fetchUser();
+  }, [url]);
   // order matters
   // don't place user JSX before loading or error
 
-  return { isLoading, isError, data }
+  return { isLoading, isError, user }
 }
 

@@ -1,5 +1,5 @@
 import React, { FormEvent, FormHTMLAttributes, useEffect, useState } from 'react'
-import {data} from '../data'
+import {data} from '../../../data'
 
 type Data = {
   id: number,
