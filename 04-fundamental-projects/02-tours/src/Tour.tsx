@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TourContext } from './TourContext';
+import { remove } from 'lodash';
 
 type Tour = {
   tour: {
@@ -11,6 +13,8 @@ type Tour = {
 }
 
 export default function ({ tour }: Tour) {
+
+  const { removeTour } = useContext(TourContext)
 
   const fullInfo = tour.info;
 
@@ -32,7 +36,7 @@ export default function ({ tour }: Tour) {
       </div>
       <a href="#" className='read'>Read more</a>
 
-      <button className='not-interested-button'> Not Interested </button>
+      <button className='not-interested-button' onClick={() => removeTour(tour.id)}> Not Interested </button>
 
     </div>
   )
