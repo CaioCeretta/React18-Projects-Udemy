@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Tour from './Tour';
+import { TourContext } from './TourContext';
 
 type Tour = {
   id: number;
@@ -14,10 +15,13 @@ interface ToursProps {
   tours: Tour[]
 }
 
-export default function Tours({ tours }: ToursProps) {
+export default function Tours() {
+
+  const { tours, removeTour } = useContext(TourContext)
+
   return (
     tours.map(tour => (
-        <Tour tour={tour} />
-      ))
+      <Tour tour={tour} />
+    ))
   )
 }

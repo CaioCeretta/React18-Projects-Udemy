@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useContext, useMemo, useState } from "react";
+import React, { ReactNode, createContext, useContext, useEffect, useMemo, useState } from "react";
 
 interface Tour {
   id: number;
@@ -18,8 +18,33 @@ const TourContext = createContext<TourContextType>({
   removeTour: () => {},
 });
 
-const TourProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+const url = 'https://course-api.com/react-tours-project';
+
+
+function TourProvider({ children }: { children: ReactNode }) {
   const [tours, setTours] = useState<Tour[]>([]);
+
+
+  useEffect(() => {
+    async function fetchTours(url: string) {
+      try {
+        const response = await fetch(url)
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+
+        const json = await response.json();
+
+        setTours(json)
+      } catch (error) {
+        console.log('Error fetching tours', error)
+      }
+    }
+
+    fetchTours(url)
+  }, [])
+
 
   const removeTour = (id: number) => {
     setTours((prevTours) => prevTours.filter((tour) => tour.id !== id));
